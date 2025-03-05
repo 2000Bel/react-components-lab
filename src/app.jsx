@@ -1,52 +1,54 @@
-import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import viteLogo from '/vite.svg'
-import './app.css'
+import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
+
+const weatherForecasts = [
+  {
+    day: 'Mon',
+    img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-components-lab/assets/day.svg',
+    imgAlt: 'sun icon',
+    conditions: 'sunny',
+    time: 'Morning',
+  },
+  {
+    day: 'Tue',
+    img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-components-lab/assets/night.svg',
+    imgAlt: 'moon icon',
+    conditions: 'clear',
+    time: 'Night',
+  },
+  {
+    day: 'Wed',
+    img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-components-lab/assets/stormy.svg',
+    imgAlt: 'clouds with lightning icon',
+    conditions: 'stormy',
+    time: 'All Day',
+  },
+  {
+    day: 'Thu',
+    img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-components-lab/assets/cloudy-day.svg',
+    imgAlt: 'sun overcast by clouds icon',
+    conditions: 'overcast',
+    time: 'Evening',
+  },
+  {
+    day: 'Fri',
+    img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-components-lab/assets/cloudy-night.svg',
+    imgAlt: 'moon overcast by clouds icon',
+    conditions: 'cloudy',
+    time: 'Night',
+  },
+];
 
 const App = () => {
-
   return (
-    <h1>Hello world!</h1>
+    <>
+    <h1>Local Weather</h1>
+    <section>
+      {WeatherForecast.map((forecast, index)=>(
+        <WeatherForecast key={index}{...forecast}/>
+      ))}
+    </section>
+  </>
   );
 }
 
-export default App
-
-export function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
-        </a>
-      </div>
-      <h1>Vite + Preact</h1>
-      <div class="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/app.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p>
-        Check out{' '}
-        <a
-          href="https://preactjs.com/guide/v10/getting-started#create-a-vite-powered-preact-app"
-          target="_blank"
-        >
-          create-preact
-        </a>
-        , the official Preact + Vite starter
-      </p>
-      <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
-      </p>
-    </>
-  )
-}
+export default App;
